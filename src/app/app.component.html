@@ -3,16 +3,11 @@
         <img src="../assets/logo.svg" alt="logo">Fairhouse
     </header>
     <section>
-        <app-housing-list (selectedLocationEvent)="updateSelectedLocation($event)"></app-housing-list>
+        <ng-container *ngIf="!selectedLocation">
+            <app-housing-list (selectedLocationEvent)="updateSelectedLocation($event)"></app-housing-list>
+        </ng-container>
     </section>
     <article>
-        <ng-container *ngIf="selectedLocation">
-            <img [src]="selectedLocation.photo">
-            <p>{{selectedLocation.name}}</p>
-            <p>{{selectedLocation.availableUnits}}</p>
-            <p>{{selectedLocation.city}}, {{selectedLocation.state}}</p>
-            <p>{{selectedLocation.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
-            <p>{{selectedLocation.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
-        </ng-container>
+        <router-outlet></router-outlet>
     </article>
 </main>

@@ -13,6 +13,10 @@ export class HousingListService {
     return this.locationList;
   }
 
+  getHousingLocationById(id: string): HousingLocation | undefined {
+    return this.locationList.find(location => location.id === parseInt(id));
+  }
+
   searchHousesByCity(searchText: string): HousingLocation[] {
     if (!searchText) {
       return this.locationList; // Return the entire list when no search text is provided
@@ -26,6 +30,7 @@ export class HousingListService {
   setHousingLocations() {
     this.locationList = [
       {
+        id: 0,
         name: "Acme Fresh Start Housing",
         city: "Chicago",
         state: "IL",
@@ -35,6 +40,7 @@ export class HousingListService {
         laundry: true,
       },
       {
+        id: 1,
         name: "A113 Transitional Housing",
         city: "Santa Monica",
         state: "CA",
@@ -44,6 +50,7 @@ export class HousingListService {
         laundry: true,
       },
       {
+        id: 2,
         name: "Warm Beds Housing Support",
         city: "Juneau",
         state: "AK",

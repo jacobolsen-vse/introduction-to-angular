@@ -1,9 +1,9 @@
 <label for="location-search">Search for a new place</label>
-<input id="location-search" [(ngModel)]="searchText" placeholder="Ex: Chicago">
+<input id="location-search" placeholder="Ex: Chicago" [(ngModel)]="searchText" (keyup.enter)="searchHousingLocations(searchText)">
 <button (click)="searchHousingLocations(searchText)">Search</button>
 <article *ngFor="let location of results">
     <img [src]="location.photo" [alt]="location.name">
     <p>{{ location.name }}</p>
     <p>{{ location.city }}, {{ location.state }}</p>
-    <button (click)="selectHousingLocation(location)">View</button>
+    <button [routerLink]="['/housing', location.id]" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="selectHousingLocation(location)">View</button>
 </article>

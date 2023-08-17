@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { HousingLocation } from '../housing-location';
 import { HousingListService } from '../housing-list.service';
 
@@ -12,7 +13,10 @@ export class HousingListComponent implements OnInit {
   @Output() selectedLocationEvent = new EventEmitter<HousingLocation>();
   searchText: string = "";
 
-  constructor(private housingListService: HousingListService) { }
+  constructor(
+    private housingListService: HousingListService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.results = this.housingListService.getHousingLocations();
@@ -24,5 +28,9 @@ export class HousingListComponent implements OnInit {
 
   selectHousingLocation(location: HousingLocation) {
     this.selectedLocationEvent.emit(location);
+  }
+
+  viewHousingDetails(location: HousingLocation) {
+    this.router.navigate(['/housing', location.id]);
   }
 }

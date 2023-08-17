@@ -1,0 +1,9 @@
+<article>
+    <img [src]="location?.photo">
+    <p>{{location?.name}}</p>
+    <p>{{location?.availableUnits}}</p>
+    <p>{{location?.city}}, {{location?.state}}</p>
+    <p>{{location?.laundry ? "Has laundry" : "Does Not have laundry"}}</p>
+    <p>{{location?.wifi ? "Has wifi" : "Does Not have wifi"}}</p>
+    <button (click)="goBack()">Back</button>
+</article>
