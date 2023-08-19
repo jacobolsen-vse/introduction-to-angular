@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HousingLocation } from './housing-location';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,9 @@ import { HousingLocation } from './housing-location';
 export class HousingListService {
   private locationList: HousingLocation[] = [];
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+    ) { }
 
   getHousingLocations(): HousingLocation[] {
     return this.locationList;
